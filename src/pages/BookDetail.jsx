@@ -73,7 +73,7 @@ export default function BookDetail() {
           <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem', lineHeight: 1.2 }}>{book.title}</h1>
           <div style={{ fontSize: '1.25rem', color: 'var(--muted)', marginBottom: '2rem' }}>by {book.author}</div>
           
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem', marginBottom: '2rem', padding: '1.5rem', background: 'rgba(255,255,255,0.03)', borderRadius: 'var(--radius)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem', marginBottom: '2rem', padding: '1.5rem', background: 'var(--surface2)', borderRadius: 'var(--radius)' }}>
             <div>
               <div style={{ fontSize: '0.75rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: 1, marginBottom: '0.25rem' }}>Availability</div>
               <div style={{ fontSize: '1.1rem', fontWeight: 600, color: isAvailable ? 'var(--success)' : 'var(--danger)' }}>
