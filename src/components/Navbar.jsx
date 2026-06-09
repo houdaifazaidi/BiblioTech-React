@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { ThemeContext } from '../context/ThemeContext';
 
 export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -13,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav style={{
-      background: 'rgba(17,24,39,0.85)',
+      background: 'var(--nav-bg)',
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid var(--border)',
       position: 'sticky',
@@ -45,23 +47,41 @@ export default function Navbar() {
           Browse
         </NavLink>
 
+        {user && (
+          <NavLink to="/loans" style={({ isActive }) => ({
+            color: isActive ? 'var(--accent)' : 'var(--muted)',
+            textDecoration: 'none',
+            fontSize: '0.875rem',
+            fontWeight: 500,
+            padding: '0.4rem 0.75rem',
+            borderRadius: 8,
+            background: isActive ? 'rgba(99,102,241,0.1)' : 'transparent'
+          })}>
+            My Loans
+          </NavLink>
+        )}
+
+        <button 
+          onClick={toggleTheme} 
+          className="btn btn-secondary btn-sm" 
+          style={{ 
+            padding: '0.4rem 0.6rem', 
+            fontSize: '1rem', 
+            borderRadius: 8,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginLeft: '0.5rem'
+          }}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
+
         {user ? (
-          <>
-            <NavLink to="/loans" style={({ isActive }) => ({
-              color: isActive ? 'var(--accent)' : 'var(--muted)',
-              textDecoration: 'none',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              padding: '0.4rem 0.75rem',
-              borderRadius: 8,
-              background: isActive ? 'rgba(99,102,241,0.1)' : 'transparent'
-            })}>
-              My Loans
-            </NavLink>
-            <button onClick={handleLogout} className="btn btn-secondary btn-sm" style={{ marginLeft: '0.5rem' }}>
-              Log Out
-            </button>
-          </>
+          <button onClick={handleLogout} className="btn btn-secondary btn-sm" style={{ marginLeft: '0.5rem' }}>
+            Log Out
+          </button>
         ) : (
           <>
             <Link to="/login" className="btn btn-secondary btn-sm">Log In</Link>
