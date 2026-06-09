@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../api/axios';
 import { AuthContext } from '../context/AuthContext';
 import LoanCard from '../components/LoanCard';
+import ReturnedBookCard from '../components/ReturnedBookCard';
 
 export default function MyLoans() {
   const [loans, setLoans] = useState([]);
@@ -80,13 +81,16 @@ export default function MyLoans() {
 
             {historyLoans.length > 0 && (
               <>
-                <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Loan History</h2>
-                <div className="card">
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    {historyLoans.map(loan => (
-                      <LoanCard key={loan.id} loan={loan} />
-                    ))}
-                  </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
+                  <h2 style={{ fontSize: '1.5rem' }}>Loan History</h2>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--muted)', background: 'var(--surface2)', padding: '0.3rem 0.8rem', borderRadius: 999, border: '1px solid var(--border)' }}>
+                    {historyLoans.length} book{historyLoans.length !== 1 ? 's' : ''} returned
+                  </span>
+                </div>
+                <div className="returned-grid">
+                  {historyLoans.map(loan => (
+                    <ReturnedBookCard key={loan.id} loan={loan} />
+                  ))}
                 </div>
               </>
             )}
