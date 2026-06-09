@@ -4,15 +4,15 @@ export default function LoanCard({ loan, onReturn }) {
 
   return (
     <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '1.25rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-      {loan.book.cover_image ? (
-        <img src={loan.book.cover_image} alt={loan.book.title} style={{ width: 60, height: 90, objectFit: 'cover', borderRadius: 6, flexShrink: 0, background: 'var(--surface2)' }} />
+      {loan.cover_image ? (
+        <img src={loan.cover_image} alt={loan.book_title} style={{ width: 60, height: 90, objectFit: 'cover', borderRadius: 6, flexShrink: 0, background: 'var(--surface2)' }} />
       ) : (
         <div style={{ width: 60, height: 90, background: 'var(--surface2)', borderRadius: 6, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>📚</div>
       )}
       
       <div style={{ flex: 1 }}>
-        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>{loan.book.title}</div>
-        <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{loan.book.author}</div>
+        <div style={{ fontWeight: 600, fontSize: '0.95rem' }}>{loan.book_title}</div>
+        <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginTop: '0.25rem' }}>{loan.book_author}</div>
         <div style={{ fontSize: '0.8rem', color: 'var(--muted)', marginTop: '0.5rem' }}>
           Borrowed: {new Date(loan.borrowed_at).toLocaleDateString()} • Due: {new Date(loan.due_date).toLocaleDateString()}
         </div>
