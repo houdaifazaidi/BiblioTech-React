@@ -20,6 +20,7 @@
   --muted: #64748b;
   --radius: 12px;
   --nav-bg: rgba(17, 24, 39, 0.85);
+  --header-bg: linear-gradient(135deg, #1e1b4b 0%, #0f172a 60%);
 }
 
 [data-theme="light"] {
@@ -30,6 +31,7 @@
   --text: #111827;
   --muted: #6b7280;
   --nav-bg: rgba(255, 255, 255, 0.85);
+  --header-bg: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 60%);
 }
 
 body {
@@ -247,7 +249,7 @@ textarea:focus {
 
 /* Page Header */
 .page-header {
-  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 60%);
+  background: var(--header-bg);
   padding: 3rem 2rem;
   text-align: center;
   border-bottom: 1px solid var(--border);
